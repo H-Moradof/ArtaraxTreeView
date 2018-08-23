@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Artarax TreeView Plugin Demo</title>
+
+    <link rel="stylesheet" href="/artarax-treeview/jquery.artaraxtreeview.css">
+    <style>
+    *{
+        text-align: right;
+        direction: rtl;
+        font-family: tahoma;
+        font-size:14px
+    }
+    </style>
+
+</head>
+<body>
+    
+    <!-- treeview wrapper -->
+    <ul class="treeview"></ul>
+
+    <br>
+    <button id="btn">Get selected ids</button>
+
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<!-- plugin -->
+<script src="/artarax-treeview/jquery.artaraxtreeview.js"></script>
+    <script>
+        var treeViewData = [
+            { 'Id' : 1, 'Title' : 'روت', 'ParentId' : null },
+            { 'Id' : 2, 'Title' : 'آیتم 1', 'ParentId' : 1 },
+            { 'Id' : 3, 'Title' : 'آیتم 2', 'ParentId' : 1 },
+            { 'Id' : 4, 'Title' : 'آیتم 3', 'ParentId' : 1 },
+            { 'Id' : 5, 'Title' : 'آیتم 1-1', 'ParentId' : 2 },
+            { 'Id' : 6, 'Title' : 'آیتم 1-2', 'ParentId' : 2 },
+            { 'Id' : 7, 'Title' : 'آیتم 2-1', 'ParentId' : 3 },
+            { 'Id' : 8, 'Title' : 'آیتم 3-1', 'ParentId' : 4 },
+            { 'Id' : 9, 'Title' : 'آیتم 3-2', 'ParentId' : 4 }
+        ];
+
+        var selectedItemIds = [7,8,9];
+
+        // set settings
+        var artaraxTreeView = $.artaraxTreeView({
+            jsonData: treeViewData,
+            selectedIds: selectedItemIds, // just use on update mode (when you run tree view by 'loadTreeViewOnUpdate()' function)
+            updateCallBack: onUpdate,
+            deleteCallBack: onDelete
+          // ,isDisplayChildren: false // use this to collapse all nodes on load (it works just on insert mode, when you run tree view by 'loadTreeViewOnInsert()' function)
+        });
+
+        // load treeview
+         artaraxTreeView.loadTreeViewOnInsert(1); // 1 is the root id
+
+        // use above line on insert mode, for update mode use below line 
+        
+        // artaraxTreeView.loadTreeViewOnUpdate(1);
+
+
+        
+        $("#btn").click(function(){
+            var selectedIds = artaraxTreeView.getSelectedIds();
+
+            alert(JSON.stringify(selectedIds));
+        });
+
+
+        function onUpdate(obj)
+        {
+            // save data into db here
+            alert('onUpdate executed >> selected object is >>' + JSON.stringify(obj));
+        }
+
+        function onDelete(obj)
+        {
+            // save data into db here
+            alert('onDelete executed >> selected object is >>' + JSON.stringify(obj));
+        }
+
+    </script>
+
+</body>
+</html>
