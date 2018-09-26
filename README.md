@@ -43,9 +43,24 @@ var selectedItemIds = [7,8,9];
 var artaraxTreeView = $.artaraxTreeView({
     jsonData: treeViewData,
     selectedIds: selectedItemIds, 
-    updateCallBack: onUpdate,
-    deleteCallBack: onDelete
+    updateCallBack: onUpdate, // callback function
+    deleteCallBack: onDelete // callback function
 });
+
+// when user click the delete/update button on an item in treeview, the plugin send the item's object into your callback functions
+
+function onUpdate(obj)
+{
+    // you can load updating item's data into your form to let user to edit that
+    alert(obj.Id + " " + obj.Title + " " + obj.ParentId);
+}
+
+function onDelete(obj)
+{
+    // you can call an API to delete the item
+    alert(obj.Id + " " + obj.Title + " " + obj.ParentId);
+}
+
 ```
 
 ### 5) Load treeview by code below
