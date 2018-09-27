@@ -6,32 +6,49 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Artarax TreeView Plugin Demo</title>
 
-    <link rel="stylesheet" href="/artarax-treeview/jquery.artaraxtreeview.css">
+    <!-- 1) plugin -->
+    <link rel="stylesheet" href="artarax-treeview/jquery.artaraxtreeview.css">
+
     <style>
-    *{
-        text-align: right;
-        direction: rtl;
-        font-family: tahoma;
-        font-size:14px
-    }
+    *{ text-align: right; direction: rtl; font-family: tahoma; font-size:14px}
+    input[type=text]{height:20px;padding: 0;border:1px solid #ccc;width:200px;margin:0 0 5px}
+    button{min-width: 100px;text-align: center;padding:5px 10px;background-color: #c0c0c0;border: 1px solid #eee;}
     </style>
 
 </head>
 <body>
+
+    <form action="/" method="post">
+        <label>آی دی</label><br/>
+        <input type="text" id="Id" /><br/>
+        <label>عنوان</label><br/>
+        <input type="text" id="Title" /><br/>
+        <label>پرنت آی دی</label><br/>
+        <input type="text" id="ParentId" /><br/>
+        <button>ثبت</button>
+    </form>
+    <br/><br/>
+
     
-    <!-- treeview wrapper -->
+    <!-- 2) treeview wrapper -->
+    <h5>_________ دسته بندی ها _________</h5>
     <ul class="treeview"></ul>
 
-    <br>
-    <button id="btn">Get selected ids</button>
+    <br/>
+    <button id="getSelectedIds">Get selected ids</button> &nbsp;&nbsp;
+    <button id="detSelectedLeafIds">Get selected leaf ids</button> &nbsp;&nbsp;
+    
 
 
-<!-- jQuery -->
+
+<!-- 3) jQuery -->
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
-<!-- plugin -->
-<script src="/artarax-treeview/jquery.artaraxtreeview.js"></script>
+<!-- 4) plugin -->
+<script src="artarax-treeview/jquery.artaraxtreeview.js"></script>
     <script>
+
+        // you can get this from server (via AJAX)
         var treeViewData = [
             { 'Id' : 1, 'Title' : 'روت', 'ParentId' : null },
             { 'Id' : 2, 'Title' : 'آیتم 1', 'ParentId' : 1 },
@@ -64,22 +81,30 @@
 
 
         
-        $("#btn").click(function(){
+        $("#getSelectedIds").click(function(){
             var selectedIds = artaraxTreeView.getSelectedIds();
 
             alert(JSON.stringify(selectedIds));
         });
 
+        $("#detSelectedLeafIds").click(function(){
+            var selectedLeafIds = artaraxTreeView.getSelectedLeafIds();
+
+            alert(JSON.stringify(selectedLeafIds));
+        });
+
 
         function onUpdate(obj)
         {
-            // save data into db here
-            alert('onUpdate executed >> selected object is >>' + JSON.stringify(obj));
+            // you can use obj props to fill a form
+            $("#Id").val(obj.Id);
+            $("#Title").val(obj.Title);
+            $("#ParentId").val(obj.ParentId);
         }
 
         function onDelete(obj)
         {
-            // save data into db here
+            // call server API to delete item
             alert('onDelete executed >> selected object is >>' + JSON.stringify(obj));
         }
 
