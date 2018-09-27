@@ -37,7 +37,7 @@
     <br/>
     <button id="getSelectedIds">Get selected ids</button> &nbsp;&nbsp;
     <button id="detSelectedLeafIds">Get selected leaf ids</button> &nbsp;&nbsp;
-    
+    <button id="clear">Clear treeview</button> &nbsp;&nbsp;
 
 
 
@@ -92,6 +92,11 @@
 
             alert(JSON.stringify(selectedLeafIds));
         });
+
+         $("#clear").click(function(){
+            var selectedLeafIds = artaraxTreeView.unCheckedAll();
+        });
+
 
 
         function onUpdate(obj)
