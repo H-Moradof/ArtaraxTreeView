@@ -1,5 +1,6 @@
 # ArtaraxTreeView
-a TreeView jQuery plugin
+ArtaraxTreeView allow you to display any tree structure data such as product categories or etc.
+It also allow you to edit or delete tree items.
 
 See DEMO here: https://github.com/H-Moradof/ArtaraxTreeView/blob/master/persian-demo.gif
 
