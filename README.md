@@ -37,7 +37,7 @@ var treeViewData = [
         
 var selectedItemIds = [7,8,9];
 ```
-*Note that your first record should be root item with id = 1
+*Note that your first record MUST be root item with id = 1
 
 ### 4) Set treeview settings and assign your previous variables
 (you can also set multiple awesome settings like 'mode', 'isDisplayChildren' and etc)
