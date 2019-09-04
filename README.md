@@ -1,6 +1,6 @@
 # ArtaraxTreeView
-ArtaraxTreeView allow you to display any tree structure data such as product categories or etc.
-It also allow you to edit or delete tree items.
+ArtaraxTreeView allows you to display any tree structure data such as product categories or etc.
+It also allows you to edit or delete tree items, you can simply get all data of the item that user wants to edit or delete.
 
 See DEMO here: https://github.com/H-Moradof/ArtaraxTreeView/blob/master/persian-demo.gif
 
