@@ -1,6 +1,8 @@
 # ArtaraxTreeView
 a TreeView jQuery plugin
 
+See DEMO here: https://github.com/H-Moradof/ArtaraxTreeView/blob/master/persian-demo.gif
+
 ## How to use
 
 ### 1) Put this on your html page:
@@ -99,6 +101,7 @@ artaraxTreeView.loadTreeViewOnInsert(1);
         4) unCheckedAll()
 --------------------------------------------------------------------- */
 ```
+
 
 For more information please see the source. there is a demo file (index.html)
 
