@@ -1,5 +1,8 @@
 # ArtaraxTreeView
-a TreeView jQuery plugin
+ArtaraxTreeView allows you to display any tree structure data such as product categories or etc.
+It also allows you to edit or delete tree items, you can simply get all data of the item that user wants to edit or delete.
+
+See DEMO here: https://github.com/H-Moradof/ArtaraxTreeView/blob/master/persian-demo.gif
 
 ## How to use
 
@@ -21,20 +24,20 @@ a TreeView jQuery plugin
 (you can also declare an array of selected ids for checking some items on load)
 ``` javasript
 var treeViewData = [
-      { 'Id' : 1, 'Title' : 'روت', 'ParentId' : null },
-      { 'Id' : 2, 'Title' : 'آیتم 1', 'ParentId' : 1 },
-      { 'Id' : 3, 'Title' : 'آیتم 2', 'ParentId' : 1 },
-      { 'Id' : 4, 'Title' : 'آیتم 3', 'ParentId' : 1 },
-      { 'Id' : 5, 'Title' : 'آیتم 1-1', 'ParentId' : 2 },
-      { 'Id' : 6, 'Title' : 'آیتم 1-2', 'ParentId' : 2 },
-      { 'Id' : 7, 'Title' : 'آیتم 2-1', 'ParentId' : 3 },
-      { 'Id' : 8, 'Title' : 'آیتم 3-1', 'ParentId' : 4 },
-      { 'Id' : 9, 'Title' : 'آیتم 3-2', 'ParentId' : 4 }
+      { 'Id' : 1, 'Title' : 'root', 'ParentId' : null },
+      { 'Id' : 2, 'Title' : 'item 1', 'ParentId' : 1 },
+      { 'Id' : 3, 'Title' : 'item 2', 'ParentId' : 1 },
+      { 'Id' : 4, 'Title' : 'item 3', 'ParentId' : 1 },
+      { 'Id' : 5, 'Title' : 'item 1-1', 'ParentId' : 2 },
+      { 'Id' : 6, 'Title' : 'item 1-2', 'ParentId' : 2 },
+      { 'Id' : 7, 'Title' : 'item 2-1', 'ParentId' : 3 },
+      { 'Id' : 8, 'Title' : 'item 3-1', 'ParentId' : 4 },
+      { 'Id' : 9, 'Title' : 'item 3-2', 'ParentId' : 4 }
   ];
         
 var selectedItemIds = [7,8,9];
 ```
-
+*Note that your first record MUST be root item with id = 1
 
 ### 4) Set treeview settings and assign your previous variables
 (you can also set multiple awesome settings like 'mode', 'isDisplayChildren' and etc)
@@ -99,6 +102,7 @@ artaraxTreeView.loadTreeViewOnInsert(1);
         4) unCheckedAll()
 --------------------------------------------------------------------- */
 ```
+
 
 For more information please see the source. there is a demo file (index.html)
 
