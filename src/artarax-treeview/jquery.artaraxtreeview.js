@@ -24,10 +24,9 @@
 
     methods:
         1) getSelectedIds() : get an array of selected ids
-        2) getSelectedLeafIds() : get an array of selected leaf ids
-        3) loadTreeViewOnInsert(rootId) : load treeview items
-        4) loadTreeViewOnUpdate(rootId) : load treeview items and checked selected checkboxes
-        5) unCheckedAll()
+        2) loadTreeViewOnInsert(rootId) : load treeview items
+        3) loadTreeViewOnUpdate(rootId) : load treeview items and checked selected checkboxes
+        4) unCheckedAll()
 /*  --------------------------------------------------------------------- */
 
 (function ($) {
@@ -106,9 +105,18 @@
             $(".treeview").on('change', '.chk', function () {
 
                 var isCheckedNow = $(this).is(":checked");
+                var child;
 
+                // level 1 children
                 $(this).parent().next().next('ul').children('li').each(function () {
-                    $(this).children('label').children('.chk').prop('checked', isCheckedNow);
+                    child = $(this).children('label').children('.chk');
+
+                    child.prop('checked', isCheckedNow); // checked
+
+                    // level 2 children
+                    child.parent('label').next('span').next('ul').children('li').each(function () {
+                        $(this).children('label').children('.chk').prop('checked', isCheckedNow);
+                    });
                 });
             });
         }
@@ -189,11 +197,11 @@
             }
 
             if (isUpdatable) {
-                updatableHtml = '<img class="mng-img node-update" data-id="' + obj.Id + '" src="artarax-treeview/images/update.png"/>';
+                updatableHtml = '<img class="mng-img node-update" data-id="' + obj.Id + '" src="/artarax-treeview/images/update.png"/>';
             }
 
             if (isDeletable) {
-                deletableHtml = '<img class="mng-img node-delete" data-id="' + obj.Id + '" src="artarax-treeview/images/delete.png"/>';
+                deletableHtml = '<img class="mng-img node-delete" data-id="' + obj.Id + '" src="/artarax-treeview/images/delete.png"/>';
             }
 
             if (treeviewIsDisplayChildren) {
